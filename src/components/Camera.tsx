@@ -19,21 +19,21 @@ export function Camera() {
       </div>
       {isEnable ? null : (
         <div className={styles.handleCameraDisable}>
-          {isInitializing ? (
-            <>
-              {isDenied ? (
-                <p>
-                  A câmera está bloqueada. Precisamos dela para o reconhecimento
-                  facial.
-                </p>
-              ) : (
-                <p>Iniciando video...</p>
-              )}
-            </>
+          {isDenied ? (
+            <p>
+              A câmera está bloqueada. Precisamos dela para o reconhecimento
+              facial.
+            </p>
           ) : (
             <>
-              <p>O reconhecimento facial precisa acessar sua câmera</p>
-              <button onClick={useCameraDevice}>Permitir Acesso</button>
+              {isInitializing ? (
+                <p>Iniciando video...</p>
+              ) : (
+                <>
+                  <p>O reconhecimento facial precisa acessar sua câmera</p>
+                  <button onClick={useCameraDevice}>Permitir Acesso</button>
+                </>
+              )}
             </>
           )}
         </div>

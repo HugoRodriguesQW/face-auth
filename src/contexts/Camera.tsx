@@ -65,6 +65,7 @@ export function CameraProvider({ children }: CameraProps) {
         useCameraDevice()
       }
       if (res.state == 'denied') {
+        console.error('error', 'câmera bloqueada')
         setIsDenied(true)
       }
     })
