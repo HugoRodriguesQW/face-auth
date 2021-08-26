@@ -4,6 +4,7 @@ import { createContext, ReactNode } from 'react'
 interface CameraData {
   isInitializing: boolean
   isEnable: boolean
+  isDenied: boolean
   camRef: MutableRefObject<HTMLVideoElement>
   overlayRef: MutableRefObject<HTMLCanvasElement>
   useCameraDevice: () => void
@@ -20,6 +21,7 @@ export function CameraProvider({ children }: CameraProps) {
   const camRef = useRef({} as HTMLVideoElement)
   const overlayRef = useRef({} as HTMLCanvasElement)
   const [isEnable, setIsEnable] = useState(false)
+  const [isDenied, setIsDenied] = useState(false)
   const [isInitializing, setIsInitializing] = useState(false)
 
   const [stream, setStream] = useState({} as MediaStream)
@@ -37,9 +39,12 @@ export function CameraProvider({ children }: CameraProps) {
                 camRef.current.srcObject = strm
                 setStream(strm)
                 setIsEnable(true)
+                setIsDenied(false)
                 setIsInitializing(false)
               },
-              () => {}
+              () => {
+                checkCameraPermission()
+              }
             )
           }
         })
@@ -59,6 +64,9 @@ export function CameraProvider({ children }: CameraProps) {
       if (res.state == 'granted') {
         useCameraDevice()
       }
+      if (res.state == 'denied') {
+        setIsDenied(true)
+      }
     })
   }
 
@@ -69,6 +77,7 @@ export function CameraProvider({ children }: CameraProps) {
       value={{
         isInitializing,
         isEnable,
+        isDenied,
         camRef,
         overlayRef,
         useCameraDevice,

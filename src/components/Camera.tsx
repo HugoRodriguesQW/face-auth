@@ -4,7 +4,7 @@ import styles from '../styles/components/Camera.module.css'
 
 export function Camera() {
   const { useCameraDevice } = useContext(CameraContext)
-  const { camRef, overlayRef, isEnable, isInitializing } =
+  const { camRef, overlayRef, isEnable, isDenied, isInitializing } =
     useContext(CameraContext)
 
   return (
@@ -20,7 +20,16 @@ export function Camera() {
       {isEnable ? null : (
         <div className={styles.handleCameraDisable}>
           {isInitializing ? (
-            <p>Iniciando video...</p>
+            <>
+              {isDenied ? (
+                <p>
+                  A câmera está bloqueada. Precisamos dela para o reconhecimento
+                  facial.
+                </p>
+              ) : (
+                <p>Iniciando video...</p>
+              )}
+            </>
           ) : (
             <>
               <p>O reconhecimento facial precisa acessar sua câmera</p>
