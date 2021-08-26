@@ -1,0 +1,58 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+:root {
+  --white: #f6f6f6;
+  --gray-bg: #e5e5e5;
+  --hvr-white: #f6fafe;
+  --text: #545454;
+  --heavy-text: #202124;
+  --dark-bg: #1d1e20;
+  --blue: #1a73e8;
+  --blue-dark: #174ea6;
+  --gray-border: #dadce0;
+
+  font-size: 10px;
+}
+
+body {
+  background: var(--gray-bg);
+}
+
+body,
+button {
+  font-family: 'Sarala', sans-serif;
+  font-size: 1.2rem;
+  color: var(--text);
+}
+
+/* Temorário */
+body > div {
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+/* Temorário */
+
+button {
+  padding: 1rem 2rem;
+  border: 1px solid var(--gray-border);
+  border-radius: 4px;
+  background: var(--white);
+  color: var(--blue);
+  transition: 0.2s;
+}
+
+button:hover {
+  background: var(--hvr-white);
+  color: var(--blue-dark);
+  box-shadow: 5px 0 5px 5px rgba(0, 0, 0, 0.03);
+  cursor: pointer;
+}

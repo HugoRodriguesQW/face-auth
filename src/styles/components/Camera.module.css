@@ -1,0 +1,47 @@
+.cameraContainer,
+.cameraComponent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-direction: column;
+}
+
+.cameraComponent {
+  transform: scaleX(-1);
+  height: 35rem;
+  overflow: hidden;
+
+  transition: 0.5s;
+}
+
+.cameraComponent.disable {
+  background: var(--white);
+}
+
+.cameraComponent.enable {
+  background: var(--dark-bg);
+}
+
+.cameraComponent video {
+  width: 55rem;
+  object-fit: cover;
+}
+
+.cameraComponent canvas {
+  position: absolute;
+}
+
+.handleCameraDisable {
+  color: var(--text);
+  position: absolute;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.handleCameraDisable button {
+  border-radius: 0.2rem;
+}
