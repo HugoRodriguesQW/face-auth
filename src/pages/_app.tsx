@@ -7,7 +7,6 @@ import { RecognitionProvider } from '../contexts/Recognition'
 import '../styles/global.css'
 
 export default function MyApp({ Component, pageProps }: AppProps) {
-  console.info(pageProps)
   return (
     <CameraProvider>
       <RecognitionProvider>

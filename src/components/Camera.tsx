@@ -1,9 +1,12 @@
 import React, { useContext, useEffect } from 'react'
 import { CameraContext } from '../contexts/Camera'
+import { RecognitionContext } from '../contexts/Recognition'
 import styles from '../styles/components/Camera.module.css'
 
 export function Camera() {
   const { useCameraDevice } = useContext(CameraContext)
+  const { RecognitionStatus } = useContext(RecognitionContext)
+
   const { camRef, overlayRef, isEnable, isDenied, isInitializing } =
     useContext(CameraContext)
 
@@ -15,6 +18,9 @@ export function Camera() {
         }`}
       >
         <video autoPlay ref={camRef} />
+        {RecognitionStatus === 'initializing' ? (
+          <span>Carregando o reconhecimento facial</span>
+        ) : null}
         <canvas ref={overlayRef} />
       </div>
       {isEnable ? null : (

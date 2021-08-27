@@ -25,7 +25,13 @@
 
 .cameraComponent video {
   width: 55rem;
-  object-fit: cover;
+}
+
+.cameraComponent > span {
+  position: absolute;
+  bottom: 1rem;
+
+  transform: scaleX(-1);
 }
 
 .cameraComponent canvas {

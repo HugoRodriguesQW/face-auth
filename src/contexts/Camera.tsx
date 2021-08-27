@@ -35,7 +35,6 @@ export function CameraProvider({ children }: CameraProps) {
             navigator.getUserMedia(
               { video: true },
               (strm) => {
-                console.info('streaming', strm)
                 camRef.current.srcObject = strm
                 setStream(strm)
                 setIsEnable(true)
@@ -65,7 +64,6 @@ export function CameraProvider({ children }: CameraProps) {
         useCameraDevice()
       }
       if (res.state == 'denied') {
-        console.error('error', 'câmera bloqueada')
         setIsDenied(true)
       }
     })
